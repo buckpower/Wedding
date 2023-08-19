@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {Routes, RouterModule} from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+const routes: Routes = [
+  {path: 'invitation', loadChildren: () => import('./invitation/invitation.module').then(m => m.InvitationModule)},
+  {path: '**', redirectTo: 'invitation'}
+];
 
 @NgModule({
   declarations: [
@@ -10,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
