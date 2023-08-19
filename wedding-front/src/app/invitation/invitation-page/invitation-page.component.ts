@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-invitation-page',
   template: `
-    <p>
-      invitation-page works!
-    </p>
+    <app-sidenav></app-sidenav>
   `,
   styles: [
   ]
