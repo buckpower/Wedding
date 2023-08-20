@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
+import 'add-to-calendar-button';
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
@@ -7,14 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MainContentComponent implements OnInit {
-  public longText!: string;
+  calendarTitle = 'Nunta - Cristian & Sofia';
+  calendarLocation = environment.eventLocationName;
+  calendarStartDate = environment.eventDate;
+  calendarDebug = environment.production;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+
   }
 
 }

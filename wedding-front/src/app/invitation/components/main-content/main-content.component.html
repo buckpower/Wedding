@@ -19,7 +19,14 @@
       <p>Data de DD-MM-YYYY</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>Add to Calendar</button>
+      <add-to-calendar-button
+      [attr.name]="calendarTitle"
+      options="'Apple','Google'"
+      [location]="calendarLocation"
+      [attr.startDate]="calendarStartDate"
+      timeZone="Europe/Bucharest"
+      [debug]="calendarDebug"
+    ></add-to-calendar-button>
     </mat-card-actions>
   </mat-card>
 
