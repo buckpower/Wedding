@@ -39,7 +39,15 @@
       <p>Aici va fi o mica descriere a locatiei.</p>
       <p>Google Maps</p>
       <div *ngIf="apiLoaded | async">
-        <google-map></google-map>
+        <google-map [options]="options">
+          <map-marker 
+                      [position]="markerPosition"
+                      [options]="markerOptions"
+                      label="Cris&Sofia-Valea Sanzienelor"
+                      title="Locatia nuntii"
+                      >
+          </map-marker>
+        </google-map>
       </div>
     </mat-card-content>
   </mat-card>
