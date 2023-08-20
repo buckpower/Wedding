@@ -38,6 +38,9 @@
     <mat-card-content>
       <p>Aici va fi o mica descriere a locatiei.</p>
       <p>Google Maps</p>
+      <div *ngIf="apiLoaded | async">
+        <google-map></google-map>
+      </div>
     </mat-card-content>
   </mat-card>
 

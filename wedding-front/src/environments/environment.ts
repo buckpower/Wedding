@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   eventDate: '2025-06-14',
-  eventLocationName: 'Valea Sanzienelor'
+  eventLocationName: 'Valea Sanzienelor',
+  mapApiKey: ''
 };
 
 /*
