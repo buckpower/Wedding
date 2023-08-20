@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  eventDate: '2025-06-14',
+  eventLocationName: 'Valea Sanzienelor'
 };
 
 /*
