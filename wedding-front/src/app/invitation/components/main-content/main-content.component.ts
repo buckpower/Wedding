@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, catchError, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 import { environment } from 'src/environments/environment';
 
 import 'add-to-calendar-button';
-import { Observable, catchError, map, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-main-content',
   templateUrl: './main-content.component.html',
