@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   eventDate: '2025-06-14',
-  eventLocationName: 'Valea Sanzienelor'
+  eventLocationName: 'Valea Sanzienelor',
+  locationLat: 46.99758120851353,
+  locationLng: 27.59574957092455,
+  mapApiKey: ''
 };
 
 /*

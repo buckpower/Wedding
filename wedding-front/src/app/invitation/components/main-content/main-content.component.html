@@ -35,9 +35,23 @@
       <mat-card-title>Unde</mat-card-title>
       <mat-card-subtitle>Locatia nuntii</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      <p>Aici va fi o mica descriere a locatiei.</p>
-      <p>Google Maps</p>
+    <mat-card-content style="display: flex; flex-direction: row; flex-wrap: wrap;">
+      <div>
+        <p>Aici va fi o mica descriere a locatiei.</p>
+        <p>Adresa: <span>Poiana Cu Cetate 707221, Romania</span></p>
+      </div>
+      
+      <div class="google-map-container" *ngIf="apiLoaded | async">
+        <google-map [options]="options">
+          <map-marker 
+                      [position]="markerPosition"
+                      [options]="markerOptions"
+                      label="Cris&Sofia-Valea Sanzienelor"
+                      title="Locatia nuntii"
+                      >
+          </map-marker>
+        </google-map>
+      </div>
     </mat-card-content>
   </mat-card>
 
