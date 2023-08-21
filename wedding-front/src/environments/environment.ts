@@ -8,7 +8,7 @@ export const environment = {
   eventLocationName: 'Valea Sanzienelor',
   locationLat: 46.99758120851353,
   locationLng: 27.59574957092455,
-  mapApiKey: 'AIzaSyCWXUZxN1IdwTfrtbVdg9Ehj1rv38O4590'
+  mapApiKey: ''
 };
 
 /*
