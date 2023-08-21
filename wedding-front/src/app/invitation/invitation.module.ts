@@ -12,13 +12,21 @@ import { GoogleMapsModule } from '@angular/google-maps';
 
 import { MaterialModule } from '../shared/material.module';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { IntroComponent } from './components/intro/intro.component';
+import { EventDateComponent } from './components/event-date/event-date.component';
+import { EventLocationComponent } from './components/event-location/event-location.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
     InvitationPageComponent,
     ToolbarComponent,
     MainContentComponent,
-    SidenavComponent
+    SidenavComponent,
+    IntroComponent,
+    EventDateComponent,
+    EventLocationComponent,
+    SignupComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

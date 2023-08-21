@@ -1,60 +1,7 @@
 <div class="card-container">
-
-<mat-card class="info-card">
-    <mat-card-header>
-      <mat-card-title>Invitatie</mat-card-title>
-      <mat-card-subtitle>Invitatie</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Am dori sa va invitam la nunta.</p>
-    </mat-card-content>
-  </mat-card>
-  
-  <mat-card class="info-card">
-    <mat-card-header>
-      <mat-card-title>Cand</mat-card-title>
-      <mat-card-subtitle>Data nuntii</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Data de DD-MM-YYYY</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <add-to-calendar-button
-      [attr.name]="calendarTitle"
-      options="'Apple','Google'"
-      [location]="calendarLocation"
-      [attr.startDate]="calendarStartDate"
-      timeZone="Europe/Bucharest"
-      [debug]="calendarDebug"
-    ></add-to-calendar-button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card class="info-card">
-    <mat-card-header>
-      <mat-card-title>Unde</mat-card-title>
-      <mat-card-subtitle>Locatia nuntii</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content style="display: flex; flex-direction: row; flex-wrap: wrap;">
-      <div>
-        <p>Aici va fi o mica descriere a locatiei.</p>
-        <p>Adresa: <span>Poiana Cu Cetate 707221, Romania</span></p>
-      </div>
-      
-      <div class="google-map-container" *ngIf="apiLoaded | async">
-        <google-map [options]="options">
-          <map-marker 
-                      [position]="markerPosition"
-                      [options]="markerOptions"
-                      label="Cris&Sofia-Valea Sanzienelor"
-                      title="Locatia nuntii"
-                      >
-          </map-marker>
-        </google-map>
-      </div>
-    </mat-card-content>
-  </mat-card>
-
+   <app-intro></app-intro>
+   <app-event-date></app-event-date>
+   <app-event-location></app-event-location>
   <mat-card class="info-card">
     <mat-card-header>
       <mat-card-title>Observatii</mat-card-title>
@@ -64,18 +11,5 @@
       <p>Cateva informatii de folos.</p>
     </mat-card-content>
   </mat-card>
-
-  <mat-card class="info-card">
-    <mat-card-header>
-      <mat-card-title>Confirmare</mat-card-title>
-      <mat-card-subtitle>Formular de confirmare</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Nume, prenume</p>
-      <p>Email</p>
-      <p>+n, +copii</p>
-      <p>Vegetarian?, Alergii?</p>
-      <p>Vreau sa raman informat</p>
-    </mat-card-content>
-  </mat-card>
+  <app-signup></app-signup>
 </div>
