@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "config": "ts-node ./src/assets/scripts/setEnv.ts",
+    "start": "npm run config -- --environment=dev && ng serve",
+    "build": "npm run config -- --environment=prod && ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +25,8 @@
     "add-to-calendar-button": "^2.3.4",
     "ng": "^0.0.0",
     "rxjs": "~7.5.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.1"
   },
@@ -32,12 +35,14 @@
     "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "^16.2.1",
     "@types/jasmine": "~4.0.0",
+    "dotenv": "^16.3.1",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.5"
+    "typescript": "~4.9.5",
+    "yargs": "^17.7.2"
   }
 }

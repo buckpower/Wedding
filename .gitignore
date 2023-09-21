@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Angular Env variables
+environment.prod.ts
+environment.ts
+wedding-front/src/environments/*
