@@ -16,6 +16,7 @@ import { IntroComponent } from './components/intro/intro.component';
 import { EventDateComponent } from './components/event-date/event-date.component';
 import { EventLocationComponent } from './components/event-location/event-location.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignupComponent } from './components/signup/signup.component';
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    ReactiveFormsModule
   ]
 })
 export class InvitationModule { }
