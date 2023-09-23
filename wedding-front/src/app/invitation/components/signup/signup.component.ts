@@ -1,6 +1,8 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { NewPersonDialogComponent } from '../new-person-dialog/new-person-dialog.component';
 
 //Table
 export interface PeriodicElement {
@@ -15,12 +17,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 //
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
+
 export class SignupComponent implements OnInit {
   famousPeople: string[] = [];
   placeHolderName: string = "";
@@ -28,12 +30,18 @@ export class SignupComponent implements OnInit {
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;
   //
-  constructor() {
+  constructor(private dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
     this.importFamousPeople().then(lofp => this.famousPeople = lofp).then(()=> this.changePlaholderName());
+  }
+
+  openAddPersonDialog(): void {
+    this.dialog.open(NewPersonDialogComponent, {
+      width: '450px'
+    })
   }
 
   async importFamousPeople(): Promise<string[]> {

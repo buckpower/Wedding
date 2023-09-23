@@ -80,7 +80,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <div class="example-button-container">
-        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="openAddPersonDialog()">
           <mat-icon>plus_one</mat-icon>
         </button>
       </div>

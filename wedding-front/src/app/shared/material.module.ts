@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
 
 
 
@@ -30,7 +31,8 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatDialog
   ] 
 })
 export class MaterialModule { }
