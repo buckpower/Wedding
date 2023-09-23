@@ -1,1 +1,12 @@
-<p>new-person-dialog works!</p>
+<h2 mat-dialog-title>Adauga invitat</h2>
+<mat-dialog-content>
+    <app-guest-form></app-guest-form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="save()">
+        <mat-icon>save</mat-icon> Salveaza
+    </button>
+    <button mat-button color="primary" (click)="dismiss()">
+        <mat-icon>cancel</mat-icon> Anulare
+    </button>
+</mat-dialog-actions>

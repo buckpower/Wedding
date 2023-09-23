@@ -1,0 +1,36 @@
+<mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Nume si Prenume</mat-label>
+      <input matInput [placeholder]="placeHolderName" (click)="changePlaholderName()">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Adresa de email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <section class="example-section">
+      <mat-checkbox class="example-margin">Voi veni!</mat-checkbox>
+    </section>
+  </mat-card-content>
+  <mat-card class="info-card">
+    <mat-card-header>
+      <mat-card-title>Preferinte gastronomice</mat-card-title>
+      <mat-card-subtitle>Vegetarian, vegan, alergii, etc</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <section class="example-section">
+        <mat-checkbox class="example-margin">Vegetarian</mat-checkbox>
+      </section>
+      <section class="example-section">
+        <mat-checkbox class="example-margin">Vegan</mat-checkbox>
+      </section>
+      <section class="example-section">
+        <mat-checkbox class="example-margin">Am alergii</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Alergii</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </section>
+    </mat-card-content>
+  </mat-card>

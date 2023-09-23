@@ -18,6 +18,7 @@ import { EventLocationComponent } from './components/event-location/event-locati
 import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewPersonDialogComponent } from './components/new-person-dialog/new-person-dialog.component';
+import { GuestFormComponent } from './components/guest-form/guest-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NewPersonDialogComponent } from './components/new-person-dialog/new-per
     EventDateComponent,
     EventLocationComponent,
     SignupComponent,
-    NewPersonDialogComponent
+    NewPersonDialogComponent,
+    GuestFormComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
