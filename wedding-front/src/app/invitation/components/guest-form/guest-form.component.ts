@@ -1,19 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Subject } from 'rxjs';
+
+import { Guest } from 'src/app/models/Guest';
 
 @Component({
   selector: 'app-guest-form',
   templateUrl: './guest-form.component.html',
   styleUrls: ['./guest-form.component.scss']
 })
+
+
 export class GuestFormComponent implements OnInit{
+
+  @Output() instance = new EventEmitter<Guest>();
+  @Input() getGuestInfo: Subject<boolean> | undefined;
+  @Input() guest: Guest | undefined;
+
   famousPeople: string[] = [];
   placeHolderName: string = "";
+  newGuest: Guest;
   
+  constructor() {
+    this.newGuest = this.guest ?? new Guest();
+  }
   ngOnInit(): void {
+    this.getGuestInfo?.subscribe(
+      {
+        next: () => {
+        this.emitGuestInfo()
+        }
+      }
+      );
     this.importFamousPeople().then(lofp => this.famousPeople = lofp).then(()=> this.changePlaholderName());
   }
 
+  emitGuestInfo() {
+    if (!(this.email.invalid  || this.name.invalid))
+    this.instance.emit(this.newGuest);
+  }
   async importFamousPeople(): Promise<string[]> {
     return await fetch('../../../../assets/ListOfFamousPeople.txt').then(res => res.text()).then(txt => txt.split('\r\n'));
   }
@@ -28,12 +54,28 @@ export class GuestFormComponent implements OnInit{
       this.placeHolderName = this.getRandomName()
     }while(currentName === this.placeHolderName);
   }
-  email = new FormControl('', [Validators.required, Validators.email]);
-    getErrorMessage() {
-      if (this.email.hasError('required')) {
-        return 'Va rog adaugati o adresa e de email';
+  email = new FormControl('', [Validators.email]);
+  name = new FormControl('', [Validators.required]);
+
+  getErrorMessage(control:string) {
+    switch(control) { 
+      case "email": {
+        if (this.email.hasError('email')) {
+          return 'Adresa de email invalida.';
+        }
+        break;
       }
-  
-      return this.email.hasError('email') ? 'Adresa de email invalida' : '';
-    }
+      case "name": { 
+        if (this.name.hasError('required')) {
+          return 'Va rog sa va adaugati numele.';
+        }
+        break;
+      } 
+      default: { 
+         return '';
+         break; 
+      }
+   }
+   return '';
+  }
 }
