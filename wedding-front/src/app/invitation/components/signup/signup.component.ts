@@ -24,7 +24,7 @@ export interface PeriodicElement {
 export class SignupComponent implements OnInit {
   
   //table
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-email', 'demo-food', 'demo-edit'/*, 'demo-symbol'*/];
+  displayedColumns: string[] = [/*'demo-position',*/ 'demo-name', 'demo-email', 'demo-food', 'demo-edit'/*, 'demo-symbol'*/];
   guests!: Observable<Guest[]>;
   //
   constructor(private cdr: ChangeDetectorRef,

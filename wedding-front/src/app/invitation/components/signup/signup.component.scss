@@ -12,6 +12,13 @@
   //table
   .demo-table {
     width: 100%;
+    
+
+    @media (max-width: 900px) {
+      overflow-y: scroll;
+      display: flow-root;
+      max-width: 200px;
+    }
   }
   
   .mat-column-demo-position {
