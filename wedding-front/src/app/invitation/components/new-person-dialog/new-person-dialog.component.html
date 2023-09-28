@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Adauga invitat</h2>
 <mat-dialog-content>
-    <app-guest-form (instance)="getGuest($event)" [getGuestInfo]="guestSubject"></app-guest-form>
+    <app-guest-form [guest]="guest" (instance)="upsertGuest($event)" [getGuestInfo]="guestSubject"></app-guest-form>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button color="primary" (click)="save()">

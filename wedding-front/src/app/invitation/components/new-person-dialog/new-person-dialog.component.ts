@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Guest } from '../../../models/Guest';
 import { GuestFormComponent } from '../guest-form/guest-form.component';
 import { Subject } from 'rxjs';
@@ -15,16 +15,20 @@ export class NewPersonDialogComponent implements OnInit{
   guestSubject: Subject<boolean>;
   guest: Guest;
   
-  constructor(private dialogRef: MatDialogRef<NewPersonDialogComponent>,
-    private guestService: GuestService) {
-    this.guest = new Guest();
-    this.guestSubject = new Subject<boolean>();
+  constructor(
+    public dialogRef: MatDialogRef<NewPersonDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Guest,
+    private guestService: GuestService,
+    private cdr: ChangeDetectorRef
+    ) 
+    {
+      this.guest = data ?? new Guest();
+      this.guestSubject = new Subject<boolean>();
   }
 
   ngOnInit(): void {
-    
+    console.log("Guest on init:", this.guest)
   }
-
   save() {
     //this.dialogRef.close(this.child);
     this.guestSubject.next(true);
@@ -35,9 +39,9 @@ export class NewPersonDialogComponent implements OnInit{
     this.dialogRef.close(null);
   }
 
-  getGuest($event: Guest) {
-    console.log("in guest", event)
-    this.guestService.addGuest($event).then(() => this.dialogRef.close($event));
+  upsertGuest($event: Guest) {
+    console.log("in guest", $event)
+    this.guestService.upsertGuest($event).then(() => this.dialogRef.close($event));
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -12,19 +12,18 @@ import { Guest } from 'src/app/models/Guest';
 })
 
 
-export class GuestFormComponent implements OnInit{
+export class GuestFormComponent implements OnInit, OnChanges{
 
   @Output() instance = new EventEmitter<Guest>();
   @Input() getGuestInfo: Subject<boolean> | undefined;
-  @Input() guest: Guest | undefined;
-
+  @Input() guest: Guest = new Guest;
   famousPeople: string[] = [];
   placeHolderName: string = "";
-  newGuest: Guest;
   
-  constructor() {
-    this.newGuest = this.guest ?? new Guest();
-  }
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
     this.getGuestInfo?.subscribe(
       {
@@ -36,18 +35,19 @@ export class GuestFormComponent implements OnInit{
     this.importFamousPeople().then(lofp => this.famousPeople = lofp).then(()=> this.changePlaholderName());
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.cdr.detectChanges();
+  }
+
   emitGuestInfo() {
     //this.name.reset();
-    console.log("in emitGuestInfo", this.newGuest)
-    console.log("this.email.invalid", this.email.invalid)
     // console.log("this.name.invalid", this.name.invalid)
     // console.log("this.name.hasError('required')", this.name.hasError('required'))
     // console.log("this.name", this.name)
 
     if (!(this.email.invalid  /*|| this.name.hasError('required')*/))
     {
-      console.log("in if")
-      this.instance.emit(this.newGuest);
+      this.instance.emit(this.guest);
     }
   }
   async importFamousPeople(): Promise<string[]> {

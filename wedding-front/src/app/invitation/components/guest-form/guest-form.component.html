@@ -1,23 +1,24 @@
     <mat-form-field appearance="fill">
       <mat-label>Nume si Prenume</mat-label>
       <!-- <input matInput [placeholder]="placeHolderName" [formControl]="name" (click)="changePlaholderName()" [(ngModel)]="newGuest.name" required> -->
-      <input matInput [placeholder]="placeHolderName" (click)="changePlaholderName()" [(ngModel)]="newGuest.name" required>
+      <input matInput [placeholder]="placeHolderName" (click)="changePlaholderName()" [(ngModel)]="guest.name" required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error> -->
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Adresa de email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="newGuest.email">
+        <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="guest.email">
         <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
     </mat-form-field>
     <section class="example-section">
       <mat-checkbox class="example-margin">Voi veni!</mat-checkbox>
     </section>
+    <a href="#">CLick aici pt a vedea meniul</a>
     <mat-form-field>
       <mat-label>Preferinte gastronomice</mat-label>
-      <select matNativeControl required>
+      <select matNativeControl [(ngModel)]="guest.foodPref" required>
         <option>Nici o preferinta</option>
-        <option value="vegetarian">Vegetarian</option>
-        <option value="vegan">Vegan</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
       </select>
     </mat-form-field>

@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { ChangeDetectorRef, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewPersonDialogComponent } from '../new-person-dialog/new-person-dialog.component';
@@ -13,10 +13,6 @@ export interface PeriodicElement {
   email: number;
   symbol: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', email: 1.0079, symbol: 'H'}
-];
 //
 
 @Component({
@@ -28,30 +24,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class SignupComponent implements OnInit {
   
   //table
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight',/*, 'demo-symbol'*/];
-  dataSource = ELEMENT_DATA;
-
+  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-email', 'demo-food', 'demo-edit'/*, 'demo-symbol'*/];
   guests!: Observable<Guest[]>;
   //
-  constructor(private dialog: MatDialog, 
+  constructor(private cdr: ChangeDetectorRef,
+    private dialog: MatDialog, 
     private guestService: GuestService) {
   }
 
   ngOnInit(): void {
     this.guests = this.guestService.guests;
-    this.guestService.loadAll();
   }
 
-  openAddPersonDialog(): void {
+  openGuestDialog(id?:number): void {
+    let guest = undefined;
+    if (id){
+      guest = this.guestService.guestById(id);
+    }
     let dialogRef = this.dialog.open(NewPersonDialogComponent, {
-      width: '450px'
+      width: '450px', data: guest
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      this.cdr.detectChanges();
     })
   }
-
-  
 }
 
