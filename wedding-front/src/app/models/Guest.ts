@@ -1,5 +1,5 @@
 export class Guest {
-     id: string | undefined;
+     id: number | undefined;
      name: string | undefined;
      email: string | undefined;
      foodPref: string | undefined;

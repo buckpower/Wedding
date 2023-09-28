@@ -5,6 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GuestService } from './services/guest.service';
 
 const routes: Routes = [
   {path: 'invitation', loadChildren: () => import('./invitation/invitation.module').then(m => m.InvitationModule)},
@@ -20,7 +21,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [GuestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,6 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewPersonDialogComponent } from './components/new-person-dialog/new-person-dialog.component';
 import { GuestFormComponent } from './components/guest-form/guest-form.component';
+import { GuestService } from '../services/guest.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { GuestFormComponent } from './components/guest-form/guest-form.component
     HttpClientModule,
     HttpClientJsonpModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [GuestService]
 })
 export class InvitationModule { }

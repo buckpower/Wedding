@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Guest } from '../../../models/Guest';
 import { GuestFormComponent } from '../guest-form/guest-form.component';
 import { Subject } from 'rxjs';
+import { GuestService } from 'src/app/services/guest.service';
 
 @Component({
   selector: 'app-new-person-dialog',
@@ -14,7 +15,8 @@ export class NewPersonDialogComponent implements OnInit{
   guestSubject: Subject<boolean>;
   guest: Guest;
   
-  constructor(private dialogRef: MatDialogRef<NewPersonDialogComponent>) {
+  constructor(private dialogRef: MatDialogRef<NewPersonDialogComponent>,
+    private guestService: GuestService) {
     this.guest = new Guest();
     this.guestSubject = new Subject<boolean>();
   }
@@ -34,7 +36,8 @@ export class NewPersonDialogComponent implements OnInit{
   }
 
   getGuest($event: Guest) {
-    this.dialogRef.close($event);
+    console.log("in guest", event)
+    this.guestService.addGuest($event).then(() => this.dialogRef.close($event));
   }
 
 }

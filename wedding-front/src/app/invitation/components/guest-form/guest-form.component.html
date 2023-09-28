@@ -1,8 +1,9 @@
     <mat-form-field appearance="fill">
       <mat-label>Nume si Prenume</mat-label>
+      <!-- <input matInput [placeholder]="placeHolderName" [formControl]="name" (click)="changePlaholderName()" [(ngModel)]="newGuest.name" required> -->
       <input matInput [placeholder]="placeHolderName" (click)="changePlaholderName()" [(ngModel)]="newGuest.name" required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
+      <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error> -->
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Adresa de email</mat-label>

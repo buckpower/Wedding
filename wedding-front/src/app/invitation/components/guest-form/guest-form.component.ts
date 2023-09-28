@@ -37,8 +37,18 @@ export class GuestFormComponent implements OnInit{
   }
 
   emitGuestInfo() {
-    if (!(this.email.invalid  || this.name.invalid))
-    this.instance.emit(this.newGuest);
+    //this.name.reset();
+    console.log("in emitGuestInfo", this.newGuest)
+    console.log("this.email.invalid", this.email.invalid)
+    // console.log("this.name.invalid", this.name.invalid)
+    // console.log("this.name.hasError('required')", this.name.hasError('required'))
+    // console.log("this.name", this.name)
+
+    if (!(this.email.invalid  /*|| this.name.hasError('required')*/))
+    {
+      console.log("in if")
+      this.instance.emit(this.newGuest);
+    }
   }
   async importFamousPeople(): Promise<string[]> {
     return await fetch('../../../../assets/ListOfFamousPeople.txt').then(res => res.text()).then(txt => txt.split('\r\n'));
@@ -55,7 +65,7 @@ export class GuestFormComponent implements OnInit{
     }while(currentName === this.placeHolderName);
   }
   email = new FormControl('', [Validators.email]);
-  name = new FormControl('', [Validators.required]);
+  // name = new FormControl('', [Validators.required]);
 
   getErrorMessage(control:string) {
     switch(control) { 
@@ -65,12 +75,12 @@ export class GuestFormComponent implements OnInit{
         }
         break;
       }
-      case "name": { 
-        if (this.name.hasError('required')) {
-          return 'Va rog sa va adaugati numele.';
-        }
-        break;
-      } 
+      // case "name": { 
+      //   if (this.name.hasError('required')) {
+      //     return 'Va rog sa va adaugati numele.';
+      //   }
+      //   break;
+      // } 
       default: { 
          return '';
          break; 
